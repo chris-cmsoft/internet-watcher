@@ -36,14 +36,12 @@ def run_speedtest_loop():
 
 if __name__ == '__main__':
     start_http_server(8005)
-    print("Starting server")
     download_gauge = Gauge('internet_download_speed', 'Download Speed')
     upload_gauge = Gauge('internet_upload_speed', 'Upload Speed')
     ping_gauge = Gauge('internet_ping', 'Ping Speed')
     latency_gauge = Gauge('internet_latency', 'Ping Speed')
 
     while True:
-        print("Running test")
         results = run_speedtest_loop()
         download_gauge.set(results["download"])
         upload_gauge.set(results["upload"])
